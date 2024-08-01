@@ -6,12 +6,14 @@ RUN apt-get update && apt-get install -y \
     gcc \
     make \
     nodejs \
-    npm
+    npm \
+    pkg-config \
+    libssl-dev
 
 RUN rustup default nightly-2022-08-14 && \
     rustup target add wasm32-unknown-unknown
 
-RUN cargo install --locked trunk
+RUN cargo install --locked trunk --version 0.16.0
 
 RUN git clone https://github.com/SoftbearStudios/mk48.git .
 
